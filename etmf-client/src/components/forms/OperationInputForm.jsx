@@ -60,6 +60,38 @@ const initialValues = {
       services: ''
     },
     other_vendors: ''
+  },
+  study_identification: {
+    protocol_number: '',
+    alternate_study_identifiers: '',
+    version_number_date: '',
+    ind_number: '',
+    eudract_number: '',
+    sponsor_name: '',
+  },
+  study_overview: {
+    therapeutic_area: '',
+    disease_indication: '',
+    study_phase: '',
+    study_type: '',
+    trial_intervention_model: '',
+    control_method: '',
+    trial_type: '',
+    randomization: '',
+    blinding: '',
+    number_of_study_parts: '',
+    stratification_factors: '',
+    study_periods: [''],
+    participant_input_into_design: '',
+  },
+  study_monitoring_logistics: {
+    data_collection_method: 'Electronic Data Capture (EDC)',
+    monitoring_frequency: '',
+    on_site_or_remote: 'On-Site',
+    key_contacts: {
+      sponsor_contact: '',
+      cro_contact: ''
+    }
   }
 };
 
@@ -106,14 +138,14 @@ const OperationInputForm = ({ onSubmit, initialData = {}, loading = false }) => 
         ...(existingProtocol || {}),
         // Required Study Identification fields
         study_identification: {
+          ...values.study_identification,
           study_title: "Test Study",
-          protocol_number: "TEST-001",
           version_number_date: new Date().toISOString().split('T')[0],
           sponsor_name: "Test Sponsor",
-          ...values.study_identification
         },
         // Required Study Overview fields
         study_overview: {
+          ...values.study_overview,
           therapeutic_area: "Oncology",
           disease_indication: "Cancer",
           study_phase: "Phase I",
@@ -121,7 +153,6 @@ const OperationInputForm = ({ onSubmit, initialData = {}, loading = false }) => 
           randomization: false,
           blinding: "Open-Label",
           primary_objective: "Test objective",
-          ...values.study_overview
         },
         // Required Target Population fields
         target_population: {
@@ -156,11 +187,11 @@ const OperationInputForm = ({ onSubmit, initialData = {}, loading = false }) => 
         },
         // Required Study Monitoring Logistics - Using exact enum values from the model
         study_monitoring_logistics: {
-          data_collection_method: "Electronic Data Capture (EDC)", // Exact enum value from model
-          on_site_or_remote: "On-Site", // Exact enum value from model
+          data_collection_method: values.study_monitoring_logistics?.data_collection_method || "Electronic Data Capture (EDC)", // Exact enum value from model
+          on_site_or_remote: values.study_monitoring_logistics?.on_site_or_remote || "On-Site", // Exact enum value from model
           key_contacts: {
-            sponsor_contact: "Test Contact",
-            ...values.study_monitoring_logistics?.key_contacts
+            sponsor_contact: values.study_monitoring_logistics?.key_contacts?.sponsor_contact || "Test Contact",
+            cro_contact: values.study_monitoring_logistics?.key_contacts?.cro_contact || "Test Contact"
           },
           ...values.study_monitoring_logistics
         },

@@ -8,7 +8,9 @@ import MainLayout from './components/layout/MainLayout';
 import Login from './components/auth/Login';
 import DocumentList from './components/documents/DocumentList';
 import StudyFormStepper from './components/forms/StudyFormStepper';
-import VersionHistory from './components/versions/VersionHistory'
+import VersionHistory from './components/versions/VersionHistory';
+import ClinicalIntakeForm from './components/forms/ClinicalIntakeForm';
+import ClinicalIntakeHistory from './components/ClinicalIntakeHistory';
 import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
@@ -28,6 +30,8 @@ const App = () => {
           <Route path="/documents" element={<DocumentList />} />
           <Route path="/clinical-intake" element={<StudyFormStepper />} />
           <Route path="/section-history/:sectionId" element={<VersionHistory />} />
+          <Route path="/new-form" element={<ClinicalIntakeForm />} />
+          <Route path="/history" element={<ClinicalIntakeHistory />} />
 
           {/* Add more routes here */}
         </Routes>

@@ -308,6 +308,12 @@ const MainLayout = ({ children }) => {
       icon: <Description />,
       path: '/clinical-intake',
     },
+    {
+      id: 'clinical-intake-history',
+      text: 'Clinical Intake History',
+      icon: <Description />,
+      path: '/history',
+    },
     { 
       id: 'dashboard',
       text: 'Dashboard', 
