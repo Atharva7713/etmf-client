@@ -16,7 +16,7 @@ import {
   ListItem,
   ListItemText,
   ListItemSecondaryAction,
-  Paper,
+  // Paper,
   CircularProgress,
   Snackbar,
   Alert,
@@ -445,10 +445,10 @@ const SUBMIT_FORM_ENDPOINT = API_ENDPOINTS.clinicalIntake.submit;
 // Component function
 const ClinicalIntakeForm = ({ onSubmit, initialData }) => {
   const [isParsing, setIsParsing] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  // const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   // Merge initialData with default values
   const startingValues = getInitialValues(initialData);
