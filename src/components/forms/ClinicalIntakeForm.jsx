@@ -24,7 +24,7 @@ import {
 import { Remove as RemoveIcon, CloudUpload as CloudUploadIcon } from '@mui/icons-material';
 import axios from 'axios';
 import API_ENDPOINTS from '../../config/api';
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 
 // Add Gemini API configuration
 const GEMINI_API_KEY = process.env.REACT_APP_GEMINI_API_KEY;
@@ -445,7 +445,7 @@ const SUBMIT_FORM_ENDPOINT = API_ENDPOINTS.clinicalIntake.submit;
 // Component function
 const ClinicalIntakeForm = ({ onSubmit, initialData }) => {
   const [isParsing, setIsParsing] = useState(false);
-   const [isSubmitting, setIsSubmitting] = useState(false);
+   const [setIsSubmitting] = useState(false);
    const [showSuccessAlert, setShowSuccessAlert] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   // const navigate = useNavigate();
