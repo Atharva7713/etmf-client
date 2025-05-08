@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {
   Box,
-  Typography,
   Paper,
+  Typography,
   Table,
   TableBody,
   TableCell,
@@ -22,7 +22,7 @@ import {
 } from '@mui/material';
 import { Visibility, Download } from '@mui/icons-material';
 import axios from 'axios';
-import API_ENDPOINTS from '../config/api';
+//import API_ENDPOINTS from '../config/api';
 import { jsPDF } from 'jspdf';
 
 const ClinicalIntakeHistory = () => {
@@ -34,24 +34,26 @@ const ClinicalIntakeHistory = () => {
   const [selectedSubmission, setSelectedSubmission] = useState(null);
   const [viewDialogOpen, setViewDialogOpen] = useState(false);
 
+  
+  // eslint-disable-next-line
   useEffect(() => {
+    const fetchSubmissions = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(`http://localhost:5000/api/clinical-intake?page=${page + 1}&limit=${rowsPerPage}`);
+        setSubmissions(response.data.data);
+        setError(null);
+      } catch (err) {
+        setError('Failed to fetch submissions');
+        console.error('Error fetching submissions:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
     fetchSubmissions();
   }, [page, rowsPerPage]);
 
-  const fetchSubmissions = async () => {
-    try {
-      setLoading(true);
-      const response = await axios.get(`http://localhost:5000/api/clinical-intake?page=${page + 1}&limit=${rowsPerPage}`);
-      setSubmissions(response.data.data);
-      setError(null);
-    } catch (err) {
-      setError('Failed to fetch submissions');
-      console.error('Error fetching submissions:', err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
+  
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
