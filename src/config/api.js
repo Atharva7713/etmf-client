@@ -1,6 +1,6 @@
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000/api';
 
-export default {
+const apiconfig = {
   documents: {
     upload: `${API_BASE_URL}/documents/upload`,
     download: (filename) => `${API_BASE_URL}/documents/download/${filename}`,
@@ -16,3 +16,5 @@ export default {
   },
   // ... other endpoints ...
 }; 
+
+export default apiconfig;
