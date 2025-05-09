@@ -1,20 +1,15 @@
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL 
 
-const apiconfig = {
+const api = {
   documents: {
     upload: `${API_BASE_URL}/documents/upload`,
     download: (filename) => `${API_BASE_URL}/documents/download/${filename}`,
-    files: `${API_BASE_URL}/documents`
+    files: `${API_BASE_URL}/api/documents/files`
   },
   ai: {
     parseDocuments: `${API_BASE_URL}/ai/parse-documents`,
   },
-  clinicalIntake: {
-    submit: `${API_BASE_URL}/clinical-intake/submit`,
-    get: (id) => `${API_BASE_URL}/clinical-intake/${id}`,
-    list: `${API_BASE_URL}/clinical-intake`
-  },
   // ... other endpoints ...
-}; 
+};
 
-export default apiconfig;
+export default api;
