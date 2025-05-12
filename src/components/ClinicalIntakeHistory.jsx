@@ -40,7 +40,7 @@ const ClinicalIntakeHistory = () => {
     const fetchSubmissions = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`http://localhost:5000/api/clinical-intake?page=${page + 1}&limit=${rowsPerPage}`);
+        const response = await axios.get(`http://backend-clinical-intake-fjdqf9cuanckgxfq.canadacentral-01.azurewebsites.net/api/clinical-intake?page=${page + 1}&limit=${rowsPerPage}`);
         setSubmissions(response.data.data);
         setError(null);
       } catch (err) {
